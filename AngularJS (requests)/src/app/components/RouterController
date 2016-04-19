@@ -1,0 +1,16 @@
+(function() {
+  angular.module("NodeJSRouter").controller("RouterController",RouterController);
+function RouterController($scope,routerService){
+     $scope.messages=routerService.getMessages();
+     $scope.text='';
+     $scope.addNewMessage = addNewMessage;
+
+        function addNewMessage(){
+            routerService.sendMessage($scope.text);
+          //$scope.messages.push($scope.text);
+     };
+        setInterval(function () {
+            $scope.messages = routerService.getMessages();
+        },1000);
+   };
+})();
